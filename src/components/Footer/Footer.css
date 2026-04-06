@@ -233,3 +233,12 @@
         gap: 20px;
     }
 }
+@media (max-width: 768px) {
+    .footer-middle{
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .footer-social-icon{
+        flex-wrap: wrap;
+    }
+}
