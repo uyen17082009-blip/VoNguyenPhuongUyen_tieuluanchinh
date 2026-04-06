@@ -77,7 +77,7 @@ const Header = () => {
           <div className="header-delivery-info">
             <span className="delivery-text">Giao hàng miễn phí</span>
             <i className="fas fa-phone-alt delivery-icon"></i>
-            <span className="delivery-phone">1800 6779</span>
+            <span className="delivery-phone">1800 1708</span>
           </div>
 
           <div className="header-logo-container">
