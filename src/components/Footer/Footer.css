@@ -224,6 +224,12 @@
     pointer-events: none;
 }
 @media (max-width: 1024px) {
-    .footer-content{}
+    .footer-content{
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .footer-middle{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 }
-
