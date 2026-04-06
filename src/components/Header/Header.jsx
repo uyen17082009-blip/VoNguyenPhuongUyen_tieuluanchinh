@@ -60,7 +60,7 @@ const Header = () => {
     };
   }, []);
 
-  // Danh mục sản phẩm mỹ phẩm
+
   const skincareMenuItems = [
     { text: "Sữa Rửa Mặt", href: "/cham-soc-da/sua-rua-mat" },
     { text: "Serum & Đặc Trị", href: "/cham-soc-da/serum" },
@@ -71,7 +71,6 @@ const Header = () => {
 
   return (
     <header className="aline-header">
-      {/* Top Bar */}
       <div className="header-top-bar">
         <div className="header-top-content">
           <div className="header-delivery-info">
@@ -111,12 +110,11 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Navigation */}
+
       <nav className="header-navigation">
         <div className="nav-content">
           <a href="/" className="nav-link">TRANG CHỦ</a>
 
-          {/* Chăm sóc da với Dropdown */}
           <div
             className="nav-item-with-dropdown"
             onMouseEnter={() => setHoveredMenu('skincare')}
