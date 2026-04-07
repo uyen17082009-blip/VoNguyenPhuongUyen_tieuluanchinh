@@ -1,49 +1,33 @@
 import React from "react";
 import "./Header.css";
-// import logoImage từ thư mục img
 import logoImage from "../../img/logo.png";
 
 const Header = () => {
   return (
     <header className="aline-header">
-      {/* Top Bar (Dải màu hồng pastel đậm) */}
-      <div className="header-topbar">
-        <div className="container header-top-content">
-          <p>✨ Chào mừng đến với Aline Beauty - Đánh thức vẻ đẹp tự nhiên ✨</p>
-          <div className="header-top-links">
-            <a href="/faq">FAQ</a>
-            <span>|</span>
-            <a href="/contact">Liên hệ</a>
-          </div>
-        </div>
-      </div>
+      
 
-      {/* Main Header (Theo cấu trúc ảnh tham khảo) */}
       <div className="container header-main">
+        {/* Logo được làm to hơn ở đây */}
         <div className="header-logo">
-          <img src={logoImage} alt="Aline Beauty" />
+          <img src={logoImage} alt="Aline Beauty" className="main-logo" />
         </div>
 
-        {/* Thanh tìm kiếm lớn ở giữa (Theo cấu trúc ảnh) */}
         <div className="header-search">
-          <input type="text" placeholder="Tìm kiếm sản phẩm, thương hiệu..." />
+          <input type="text" placeholder="Tìm kiếm mỹ phẩm chính hãng..." />
           <button className="search-btn">
             <i className="fas fa-search"></i>
           </button>
         </div>
 
-        {/* Các Icon và Giỏ hàng (Màu hồng pastel) */}
         <div className="header-user-actions">
           <div className="action-item">
             <i className="fas fa-user-circle"></i>
             <div>
-              <span>Tài khoản</span>
+              <span>Chào bạn!</span>
               <a href="/login" className="login-link">Đăng nhập</a>
             </div>
           </div>
-          <a href="/wishlist" className="action-item icon-only">
-            <i className="far fa-heart"></i>
-          </a>
           <a href="/cart" className="action-item cart-item">
             <i className="fas fa-shopping-bag"></i>
             <span className="cart-badge">0</span>
@@ -51,15 +35,40 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Menu điều hướng (Tone hồng pastel) */}
       <nav className="header-nav">
         <div className="container nav-links">
-          <a href="/"><i className="fas fa-home"></i> TRANG CHỦ</a>
-          <a href="/skincare">CHĂM SÓC DA</a>
-          <a href="/makeup">TRANG ĐIỂM</a>
-          <a href="/new-arrival">SẢN PHẨM MỚI</a>
-          <a href="/promotion">KHUYẾN MÃI</a>
-          <a href="/blog">CẨM NANG</a>
+          <div className="nav-item">
+            <a href="/">TRANG CHỦ</a>
+          </div>
+
+          {/* Mục có Menu sổ xuống */}
+          <div className="nav-item has-dropdown">
+            <a href="/skincare">CHĂM SÓC DA <i className="fas fa-chevron-down"></i></a>
+            <div className="dropdown-content">
+              <a href="/skincare/cleanser">Sữa rửa mặt</a>
+              <a href="/skincare/toner">Toner / Nước hoa hồng</a>
+              <a href="/skincare/serum">Serum / Tinh chất</a>
+              <a href="/skincare/moisturizer">Kem dưỡng ẩm</a>
+              <a href="/skincare/sunscreen">Kem chống nắng</a>
+            </div>
+          </div>
+
+          <div className="nav-item has-dropdown">
+            <a href="/makeup">TRANG ĐIỂM <i className="fas fa-chevron-down"></i></a>
+            <div className="dropdown-content">
+              <a href="/makeup/lipstick">Son môi</a>
+              <a href="/makeup/cushion">Cushion / Phấn nước</a>
+              <a href="/makeup/mascara">Mascara / Kẻ mắt</a>
+              <a href="/makeup/blush">Phấn má hồng</a>
+            </div>
+          </div>
+
+          <div className="nav-item">
+            <a href="/promotion">KHUYẾN MÃI</a>
+          </div>
+          <div className="nav-item">
+            <a href="/blog">CẨM NÀNG BEAUTY</a>
+          </div>
         </div>
       </nav>
     </header>
