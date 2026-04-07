@@ -77,7 +77,16 @@ const Footer = () => {
               <a href="https://tiktok.com" className='social-icon'><i className='fab fa-tiktok'></i></a>
             </div>
             <div className="footer-map-container">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d501521.4676604829!2d106.6782761!3d10.8772236!3m2!1i1024!2i768!4f13.1!2m1!1zdHLGsOG7nW5nIGNhbyDEkeG6s25nIGtpbmggdOG6vyBr4bu5IHRodeG6rXQgdHAgaGNt!5e0!3m2!1svi!2s!4v1775448862546!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.460232428311!2d106.6974825!3d10.7760194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38557e03db%3A0x8d760d7019039050!2sVincom%20Center!5e0!3m2!1svi!2svn!4v1710000000000!5m2!1svi!2svn" 
+    width="100%" 
+    height="120" 
+    style={{ border: 0, borderRadius: "8px" }} 
+    allowFullScreen="" 
+    loading="lazy" 
+    referrerPolicy="no-referrer-when-downgrade"
+    title="Aline Beauty Map"
+  ></iframe>
               <a className='footer-map-link' href="#" target="_blank" rel='noopener noreferrer'>
                 <i className="fas fa-location-dot"></i> {d.mapBtn}
               </a>
