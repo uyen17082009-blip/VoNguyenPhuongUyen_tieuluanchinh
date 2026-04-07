@@ -23,7 +23,7 @@ const Footer = ({ t }) => {
             <div className="footer-column">
               <h3 className="footer-column-title">{t.store}</h3>
               <ul className="footer-links">
-                <li><a href="#">Tìm cửa hàng</a></li>
+                <li><a href="#">{lang === 'VN' ? 'Tìm cửa hàng gần đây' : 'Find a store'}</a></li>
               </ul>
             </div>
           </div>
