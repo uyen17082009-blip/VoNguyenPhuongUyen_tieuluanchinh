@@ -60,7 +60,6 @@ const Header = () => {
     };
   }, []);
 
-
   const skincareMenuItems = [
     { text: "Sữa Rửa Mặt", href: "/cham-soc-da/sua-rua-mat" },
     { text: "Serum & Đặc Trị", href: "/cham-soc-da/serum" },
@@ -81,15 +80,13 @@ const Header = () => {
 
           <div className="header-logo-container">
             <div className="aline-logo" onClick={() => navigate('/')} style={{cursor: 'pointer'}}>
+              {/* Đã dùng đúng biến logoImage */}
               <img src={logoImage} alt="Aline Beauty Logo" className="header-logo-image" />
             </div>
           </div>
 
           <div className="header-user-actions">
-            <button
-              className="login-link"
-              onClick={() => navigate('/login')}
-            >
+            <button className="login-link" onClick={() => navigate('/login')}>
               <i className="fas fa-user"></i> {currentUser ? (currentUser.name || currentUser.user) : 'Đăng nhập'}
             </button>
             <span className="action-separator">|</span>
@@ -98,10 +95,7 @@ const Header = () => {
               <span className="lang-separator">|</span>
               <span className="lang-option">EN</span>
             </div>
-            <button
-              className="cart-button"
-              onClick={() => navigate('/cart')}
-            >
+            <button className="cart-button" onClick={() => navigate('/cart')}>
               <i className="fas fa-shopping-bag"></i>
               <span>Giỏ hàng</span>
               <span className="cart-badge">{cartCount}</span>
@@ -110,11 +104,9 @@ const Header = () => {
         </div>
       </div>
 
-
       <nav className="header-navigation">
         <div className="nav-content">
           <a href="/" className="nav-link">TRANG CHỦ</a>
-
           <div
             className="nav-item-with-dropdown"
             onMouseEnter={() => setHoveredMenu('skincare')}
@@ -123,22 +115,16 @@ const Header = () => {
             <a href="/cham-soc-da" className={`nav-link ${hoveredMenu === 'skincare' ? 'active' : ''}`}>
               CHĂM SÓC DA
             </a>
-
             {hoveredMenu === 'skincare' && (
               <div className="dropdown-menu">
                 {skincareMenuItems.map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    className="dropdown-item"
-                  >
+                  <a key={index} href={item.href} className="dropdown-item">
                     {item.text}
                   </a>
                 ))}
               </div>
             )}
           </div>
-
           <a href="/cham-soc-toc" className="nav-link">CHĂM SÓC TÓC</a>
           <a href="/trang-diem" className="nav-link">TRANG ĐIỂM</a>
           <a href="/san-pham-moi" className="nav-link">SẢN PHẨM MỚI</a>
