@@ -29,7 +29,6 @@ const Footer = () => {
   };
 
   useEffect(() => {
-    // Lắng nghe tín hiệu đổi ngôn ngữ từ Header
     const handleLangChange = (e) => setLang(e.detail);
     window.addEventListener('languageChange', handleLangChange);
     return () => window.removeEventListener('languageChange', handleLangChange);
@@ -78,15 +77,15 @@ const Footer = () => {
             </div>
             <div className="footer-map-container">
               <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.460232428311!2d106.6974825!3d10.7760194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38557e03db%3A0x8d760d7019039050!2sVincom%20Center!5e0!3m2!1svi!2svn!4v1710000000000!5m2!1svi!2svn" 
-    width="100%" 
-    height="120" 
-    style={{ border: 0, borderRadius: "8px" }} 
-    allowFullScreen="" 
-    loading="lazy" 
-    referrerPolicy="no-referrer-when-downgrade"
-    title="Aline Beauty Map"
-  ></iframe>
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.460232428311!2d106.6974825!3d10.7760194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38557e03db%3A0x8d760d7019039050!2sVincom%20Center!5e0!3m2!1svi!2svn!4v1710000000000!5m2!1svi!2svn" 
+                width="100%" 
+                height="120" 
+                style={{ border: 0, borderRadius: "8px" }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Aline Beauty Map"
+              ></iframe>
               <a className='footer-map-link' href="#" target="_blank" rel='noopener noreferrer'>
                 <i className="fas fa-location-dot"></i> {d.mapBtn}
               </a>
