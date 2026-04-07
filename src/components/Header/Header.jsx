@@ -14,6 +14,7 @@ const Header = ({ lang, setLang, t }) => {
           </div>
           <div className="top-bar-right">
             <div className="language-picker">
+              {/* Khi click sẽ chạy hàm setLang của App.js */}
               <span className={lang === 'VN' ? 'active' : ''} onClick={() => setLang('VN')}>VN</span>
               <span className="divider">|</span>
               <span className={lang === 'EN' ? 'active' : ''} onClick={() => setLang('EN')}>EN</span>
@@ -30,15 +31,9 @@ const Header = ({ lang, setLang, t }) => {
             <button><i className="fa-solid fa-magnifying-glass"></i></button>
           </div>
           <div className="header-actions">
-            <div className="action-item">
-              <i className="fa-regular fa-circle-user purple-icon"></i>
-              <span className="action-label">{t.login}</span>
-            </div>
-            <div className="action-item header-cart">
-              <div className="cart-icon-wrapper">
-                <i className="fa-solid fa-basket-shopping purple-icon"></i>
-                <span className="cart-badge">0</span>
-              </div>
+            <span className="action-label">{t.login}</span>
+            <div className="header-cart">
+              <i className="fa-solid fa-basket-shopping"></i>
               <span className="action-label">{t.cart}</span>
             </div>
           </div>
@@ -48,11 +43,9 @@ const Header = ({ lang, setLang, t }) => {
       <nav className="header-nav">
         <div className="header-container">
           <ul className="nav-list">
-            {t.menu.map((text, index) => (
+            {t.menu.map((item, index) => (
               <li key={index} className="nav-item">
-                <a href="#" className="nav-link">
-                  {text} {index === 1 && <i className="fa-solid fa-chevron-down arrow-icon"></i>}
-                </a>
+                <a href="#" className="nav-link">{item}</a>
                 {index === 1 && (
                   <ul className="submenu">
                     {t.skincareSub.map((sub, i) => <li key={i}><a href="#">{sub}</a></li>)}
