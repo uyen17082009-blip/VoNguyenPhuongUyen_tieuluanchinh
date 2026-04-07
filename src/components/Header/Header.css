@@ -1,165 +1,255 @@
-.aline-header {
-  background: white;
-  box-shadow: 0 5px 20px rgba(255, 182, 193, 0.25);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Variables - Dễ dàng thay đổi tông màu tại đây */
+:root {
+  --primary-purple: #bca0dc;      /* Tím chính (Pastel) */
+  --light-purple: #f3effa;        /* Tím cực nhạt cho nền */
+  --dark-purple: #8e74ad;         /* Tím đậm cho text khi hover */
+  --text-main: #4a4a4a;           /* Màu chữ chính */
+  --white: #ffffff;
+  --transition: all 0.3s ease;
 }
 
-.header-top-bar {
-  background: #ffdeeb; /* Hồng pastel đậm */
-  color: #666;
-  font-size: 12px;
-  padding: 8px 0;
-}
-
-.header-top-content {
+/* Cấu trúc dùng chung */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: flex;
-  justify-content: space-between;
-}
-
-.header-main {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+}
+
+/* 1. TOP BAR */
+.header-top-bar {
+  background-color: var(--light-purple);
+  font-size: 13px;
+  padding: 8px 0;
+  color: var(--dark-purple);
+  border-bottom: 1px solid #e8e0f3;
+}
+
+.top-bar-left span, .top-bar-left i {
+  margin-right: 15px;
+}
+
+.language-picker span {
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.language-picker .active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* 2. MAIN HEADER */
+.header-main {
+  background: var(--white);
   padding: 20px 0;
 }
 
-/* Làm Logo to hơn và lấp lánh khi hover */
-.main-logo-img {
-  height: 90px; /* Tăng size logo */
+.header-logo img {
+  height: 50px; /* Điều chỉnh tùy theo ảnh logo */
   cursor: pointer;
-  transition: 0.3s ease;
-}
-.main-logo-img:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 8px #ffb6c1);
 }
 
-.header-search-bar {
-  flex: 0 0 45%;
+/* Thanh tìm kiếm */
+.header-search {
+  flex: 0 1 400px;
   display: flex;
-  background: #fff0f5;
-  border: 1px solid #ffcfe2;
-  border-radius: 30px;
-  padding: 5px 5px 5px 20px;
+  border: 2px solid var(--light-purple);
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 0 20px;
+  transition: var(--transition);
 }
 
-.header-search-bar input {
-  border: none;
-  background: none;
+.header-search:focus-within {
+  border-color: var(--primary-purple);
+}
+
+.header-search input {
   flex: 1;
+  border: none;
+  padding: 10px 20px;
   outline: none;
   font-size: 14px;
 }
 
-.search-submit {
-  background: #ff99cc;
+.header-search button {
+  background: var(--primary-purple);
   border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
   color: white;
+  padding: 0 20px;
   cursor: pointer;
+  transition: var(--transition);
 }
 
+.header-search button:hover {
+  background: var(--dark-purple);
+}
+
+/* Actions: User & Cart */
 .header-actions {
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
-.user-account, .header-cart {
+.user-account-group {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  color: #ff66b2;
-  font-weight: 600;
+}
+
+.user-account-group i {
+  font-size: 24px;
+  color: var(--primary-purple);
+}
+
+.user-logged-in {
+  position: relative;
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  min-width: 150px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.user-logged-in:hover .user-dropdown {
+  display: block;
+}
+
+.user-dropdown a, .user-dropdown button {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--text-main);
   font-size: 14px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+.user-dropdown a:hover {
+  background: var(--light-purple);
+  color: var(--primary-purple);
+}
+
+.header-cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-main);
 }
 
 .cart-icon-wrapper {
   position: relative;
+}
+
+.cart-icon-wrapper i {
   font-size: 22px;
+  color: var(--text-main);
 }
 
-.cart-badge-count {
+.cart-badge {
   position: absolute;
-  top: -5px;
-  right: -8px;
-  background: #ff3399;
+  top: -8px;
+  right: -10px;
+  background: var(--primary-purple);
   color: white;
-  font-size: 10px;
-  width: 18px;
-  height: 18px;
+  font-size: 11px;
+  padding: 2px 6px;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* Nav Menu với tone Hồng Pastel */
+/* 3. NAVIGATION */
 .header-nav {
-  background: #ffdeeb;
-  border-top: 1px solid #ffcfe2;
+  background: var(--white);
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 2px solid var(--light-purple);
 }
 
-.nav-container {
+.nav-list {
   display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
   justify-content: center;
-  gap: 30px;
 }
 
-.nav-link-item {
-  text-decoration: none;
-  color: #666;
-  font-weight: 700;
-  padding: 15px 0;
-  font-size: 13px;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-.nav-link-item:hover {
-  color: #ff3399;
-  text-shadow: 0 0 10px white;
-}
-
-/* Dropdown Menu sổ xuống xịn xò */
-.nav-item-dropdown {
+.nav-item {
   position: relative;
 }
 
-.dropdown-panel {
+.nav-link {
+  display: block;
+  padding: 15px 25px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-purple);
+}
+
+.icon-arrow {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+/* Submenu mượt mà */
+.submenu {
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
-  background: white;
+  background: var(--white);
   min-width: 200px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  border-radius: 0 0 12px 12px;
-  display: flex;
-  flex-direction: column;
-  z-index: 1000;
-  border-top: 4px solid #ff99cc;
-  animation: slideDown 0.3s ease;
+  box-shadow: 0 10px 20px rgba(188, 160, 220, 0.15);
+  border-radius: 0 0 8px 8px;
+  padding: 10px 0;
+  z-index: 999;
+  border-top: 2px solid var(--primary-purple);
 }
 
-.dropdown-link {
-  padding: 12px 20px;
+.nav-item:hover .submenu {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px 20px;
   text-decoration: none;
-  color: #666;
+  color: var(--text-main);
   font-size: 14px;
-  border-bottom: 1px solid #fff0f5;
+  transition: var(--transition);
 }
 
-.dropdown-link:hover {
-  background: #fff0f5;
-  color: #ff3399;
+.submenu li a:hover {
+  background: var(--light-purple);
   padding-left: 25px;
+  color: var(--primary-purple);
 }
 
-@keyframes slideDown {
+/* Hiệu ứng Fade In cho dropdown */
+@keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-.icon-small { font-size: 10px; margin-left: 5px; }
