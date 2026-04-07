@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
 import logoImage from '../../img/logo.png';
 
@@ -9,7 +9,6 @@ const Header = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
-  // Dữ liệu đa ngôn ngữ của Header
   const trans = {
     VN: {
       freeShip: "Miễn phí giao hàng đơn từ 500k",
@@ -38,10 +37,8 @@ const Header = () => {
     setCurrentUser(savedUser ? JSON.parse(savedUser) : null);
   }, []);
 
-  // Hàm đổi ngôn ngữ và thông báo cho toàn trang
   const handleLangChange = (lang) => {
     setCurrentLang(lang);
-    // Gửi tín hiệu cho Footer và các thành phần khác
     const event = new CustomEvent('languageChange', { detail: lang });
     window.dispatchEvent(event);
   };
