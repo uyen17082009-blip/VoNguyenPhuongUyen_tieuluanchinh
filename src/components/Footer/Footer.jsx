@@ -2,48 +2,43 @@ import React from 'react';
 import './Footer.css';
 import logoImage from '../../img/logo.png';
 
-const Footer = () => {
+const Footer = ({ data }) => {
     return (
         <footer className="aline-footer">
             <div className="footer-purple-strip"></div>
             
             <div className="footer-container">
                 <div className="footer-content">
-                    {/* Cột trái: Logo lớn & Bản quyền */}
                     <div className="footer-left">
                         <div className="footer-logo">
                             <img src={logoImage} alt="Aline Beauty" className='footer-logo-img' />
                         </div>
                         <p className="footer-copyright">
-                            ©2026 Aline Beauty. <br/> 
-                            Tận tâm chăm sóc vẻ đẹp Việt. <br/>
-                            All rights reserved.
+                            {data.copyright}
                         </p>
                     </div>
 
-                    {/* Cột giữa: Các liên kết hệ thống */}
                     <div className="footer-middle">
                         <div className="footer-column">
-                            <h3 className="footer-column-title">Về Aline Beauty</h3>
+                            <h3 className="footer-column-title">{data.about}</h3>
                             <ul className="footer-links">
-                                <li><a href="/origin">Nguồn gốc thương hiệu</a></li>
-                                <li><a href="/services">Dịch vụ khách hàng</a></li>
-                                <li><a href="/careers">Cơ hội nghề nghiệp</a></li>
-                                <li><a href="/contact">Liên hệ hỗ trợ</a></li>
+                                <li><a href="/origin">{data.origin}</a></li>
+                                <li><a href="/services">{data.services}</a></li>
+                                <li><a href="/careers">{data.careers}</a></li>
+                                <li><a href="/contact">{data.contact}</a></li>
                             </ul>
                         </div>
                         <div className="footer-column">
-                            <h3 className="footer-column-title">Hệ thống cửa hàng</h3>
+                            <h3 className="footer-column-title">{data.stores}</h3>
                             <ul className="footer-links">
-                                <li><a href="/find-store">Tìm cửa hàng gần bạn</a></li>
-                                <li><a href="/policy">Chính sách đổi trả</a></li>
+                                <li><a href="/find-store">{data.findStore}</a></li>
+                                <li><a href="/policy">{data.policy}</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Cột phải: Mạng xã hội & Bản đồ */}
                     <div className="footer-right">
-                        <h3 className="footer-column-title">KẾT NỐI VỚI CHÚNG TÔI</h3>
+                        <h3 className="footer-column-title">{data.follow}</h3>
                         <div className="footer-social-icons">
                             <a href="https://facebook.com" className='social-icon' aria-label='Facebook'>
                                 <i className='fab fa-facebook-f'></i>
@@ -71,18 +66,17 @@ const Footer = () => {
                             ></iframe>
                             <a
                                 className='footer-map-link'
-                                href="https://maps.app.goo.gl/6RuUrqKaYAFapPe57"
+                                href="https://maps.google.com"
                                 target="_blank"
                                 rel='noopener noreferrer'
                             >
-                                <i className="fas fa-location-dot"></i> Xem trên Google Maps
+                                <i className="fas fa-location-dot"></i> {data.mapBtn}
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Nút Chat tròn */}
             <div className="footer-chat-button">
                 <i className='fas fa-comment-dots'></i>
             </div>
