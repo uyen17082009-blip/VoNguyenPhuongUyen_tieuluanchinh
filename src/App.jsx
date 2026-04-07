@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Header from "./components/Footer/Footer";
+
 
 export default function App() {
   const [page, setPage] = useState("login");
@@ -8,6 +10,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
+    <Footer/>
     </BrowserRouter>
   );
 }
