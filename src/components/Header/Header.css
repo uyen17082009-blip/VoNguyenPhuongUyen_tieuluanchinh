@@ -1,197 +1,149 @@
 :root {
-  --primary-purple: #bca0dc;
-  --light-purple: #f3effa;
-  --dark-purple: #8e74ad;
-  --text-main: #444;
-  --white: #ffffff;
+  --primary: #bca0dc;
+  --bg-light: #f3effa;
+  --dark: #8e74ad;
+  --text: #444;
+  --white: #fff;
 }
 
-/* TRIỆT TIÊU DẤU CHẤM TRÒN VÀ PADDING MẶC ĐỊNH */
-.aline-header ul, 
-.aline-header li {
+/* RESET TRIỆT ĐỂ DẤU CHẤM */
+.aline-header ul, .aline-header li {
   list-style: none !important;
-  list-style-type: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
 
 .header-container {
-  max-width: 1300px;
+  max-width: 1250px;
   margin: 0 auto;
-  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 15px;
 }
 
 /* 1. TOP BAR */
 .header-top-bar {
-  background-color: var(--light-purple);
+  background: var(--bg-light);
   padding: 8px 0;
   font-size: 13px;
-  color: var(--dark-purple);
+  color: var(--dark);
 }
 
-.separator { margin: 0 10px; color: #ddd; }
+.lang-separator { margin: 0 8px; color: #ccc; }
+
+.language-picker .lang-btn {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.language-picker .lang-btn.active {
+  font-weight: bold;
+  color: var(--primary);
+  text-decoration: underline;
+}
 
 /* 2. MAIN HEADER */
-.header-main { padding: 20px 0; background: #fff; }
+.header-main { padding: 15px 0; background: var(--white); }
 
 /* LOGO TO VÀ CÂN ĐỐI */
 .header-logo img {
-  height: 70px; /* Tăng kích thước logo */
+  height: 75px; /* Tăng kích thước cực đại cho cân đối */
   width: auto;
   cursor: pointer;
-  object-fit: contain;
 }
 
 .header-search {
-  flex: 0 1 500px;
+  flex: 0 1 450px;
   display: flex;
-  border: 2px solid var(--light-purple);
+  border: 2px solid var(--bg-light);
   border-radius: 30px;
   overflow: hidden;
-  margin: 0 30px;
+  margin: 0 20px;
 }
 
 .header-search input {
   flex: 1;
-  padding: 12px 25px;
+  padding: 10px 20px;
   border: none;
   outline: none;
 }
 
 .header-search button {
-  background: var(--primary-purple);
+  background: var(--primary);
   color: white;
   border: none;
-  padding: 0 25px;
+  padding: 0 20px;
   cursor: pointer;
 }
 
-/* Actions Section */
 .header-actions { display: flex; gap: 25px; }
 
-.action-item {
+.action-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
   position: relative;
 }
 
-.icon-purple {
-  font-size: 24px;
-  color: var(--primary-purple);
-}
+.purple-icon { font-size: 24px; color: var(--primary); }
 
-.action-text {
-  font-size: 15px;
-  font-weight: 500;
-}
+.action-label { font-size: 14px; font-weight: 500; }
 
-.cart-icon-wrapper { position: relative; }
+.cart-icon-box { position: relative; }
 .cart-badge {
   position: absolute;
   top: -10px;
   right: -10px;
-  background: #ff85b2; /* Hồng pastel */
+  background: #ff85b2;
   color: white;
   font-size: 10px;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+  padding: 2px 6px;
+  border-radius: 10px;
   border: 2px solid white;
 }
 
 /* 3. NAVIGATION */
-.header-nav {
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 2px solid var(--light-purple);
-}
-
-.nav-list {
-  display: flex;
-  justify-content: center;
-}
-
+.header-nav { border-top: 1px solid #f5f5f5; border-bottom: 2px solid var(--bg-light); }
+.nav-list { display: flex; justify-content: center; }
 .nav-item { position: relative; }
-
 .nav-link {
   display: block;
-  padding: 18px 25px;
+  padding: 15px 20px;
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
   font-weight: 600;
   font-size: 14px;
-  transition: 0.3s;
 }
 
-.nav-link:hover, .nav-link.active {
-  color: var(--primary-purple);
-}
+.nav-link:hover { color: var(--primary); }
 
-.arrow-icon { font-size: 10px; margin-left: 6px; }
-
-/* SUBMENU - Đã sửa lỗi căn lề và dấu chấm */
-.submenu {
+/* SUBMENU & DROPDOWN */
+.submenu, .dropdown-content {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background: white;
-  min-width: 220px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border-radius: 0 0 8px 8px;
+  min-width: 200px;
   padding: 10px 0 !important;
   z-index: 1000;
-  border-top: 3px solid var(--primary-purple);
+  border-top: 3px solid var(--primary);
 }
 
-.nav-item:hover .submenu {
+.shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 0 0 8px 8px; }
+
+.nav-item:hover .submenu, .user-logged-in:hover .dropdown-content {
   display: block;
-  animation: slideDown 0.3s ease;
 }
 
-.submenu li a {
-  display: block;
-  padding: 12px 25px !important;
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.submenu li a:hover {
-  background: var(--light-purple);
-  color: var(--primary-purple);
-  padding-left: 30px !important;
-}
-
-/* User Dropdown */
-.user-logged-in { position: relative; }
-.user-dropdown {
-  display: none;
-  position: absolute;
-  top: 130%;
-  right: 0;
-  background: white;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  border-radius: 6px;
-  min-width: 160px;
-  z-index: 100;
-  padding: 10px 0 !important;
-}
-.user-logged-in:hover .user-dropdown { display: block; }
-.user-dropdown a, .user-dropdown button {
+.submenu li a, .dropdown-content a, .dropdown-content button {
   display: block;
   padding: 10px 20px;
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
   font-size: 14px;
   border: none;
   background: none;
@@ -200,7 +152,7 @@
   cursor: pointer;
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.submenu li a:hover, .dropdown-content a:hover, .dropdown-content button:hover {
+  background: var(--bg-light);
+  color: var(--primary);
 }
