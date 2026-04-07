@@ -1,62 +1,79 @@
+.header-announcement {
+  background: linear-gradient(90deg, #ff99cc, #ffcce6);
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
 .aline-header {
-  background-color: #fff;
-  border-bottom: 2px solid #ffdeeb; /* Hồng pastel viền dưới */
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(255, 153, 204, 0.15);
 }
 
-.header-top {
-  padding: 15px 0;
-}
-
-.header-content {
+.header-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 0;
 }
 
-.logo-img {
-  height: 50px;
-  cursor: pointer;
-}
+.logo-img { height: 60px; cursor: pointer; transition: transform 0.3s; }
+.logo-img:hover { transform: scale(1.05); }
 
 .nav-menu a {
-  margin: 0 15px;
   text-decoration: none;
-  color: #666; /* Màu chữ xám nhẹ */
+  color: #555;
   font-weight: 600;
+  margin: 0 15px;
   font-size: 14px;
-  transition: color 0.3s;
-}
-
-.nav-menu a:hover {
-  color: #ff99cc; /* Hồngpastel đậm khi hover */
-}
-
-.header-actions {
-  display: flex;
-  gap: 15px;
-}
-
-.icon-btn {
-  background: none;
-  border: none;
-  font-size: 18px;
-  color: #ff99cc; /* Màu icon hồng */
-  cursor: pointer;
   position: relative;
-  padding: 5px;
 }
 
-.cart-btn .cart-count {
+.nav-menu a::after {
+  content: '';
   position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #ff3399; /* Đỏ hồng đậm cho giỏ hàng */
-  color: #fff;
-  font-size: 10px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 0; height: 2px;
+  bottom: -5px; left: 0;
+  background-color: #ff99cc;
+  transition: 0.3s;
 }
+
+.nav-menu a:hover::after { width: 100%; }
+
+.header-actions { display: flex; align-items: center; gap: 15px; }
+
+.search-box {
+  display: flex;
+  background: #fff0f5;
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: 1px solid #ffdeeb;
+}
+
+.search-box input {
+  border: none; background: none; outline: none; width: 0;
+  transition: 0.4s; color: #666;
+}
+
+.search-box.open input { width: 150px; }
+
+.action-btn { background: none; border: none; font-size: 20px; color: #ff99cc; cursor: pointer; }
+
+.login-btn {
+  background-color: #ff99cc;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover { background-color: #ff66b2; box-shadow: 0 4px 10px rgba(255, 102, 178, 0.3); }
