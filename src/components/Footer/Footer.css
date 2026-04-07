@@ -1,79 +1,164 @@
+:root {
+  --primary-purple: #bca0dc;
+  --light-purple: #f3effa;
+  --dark-purple: #8e74ad;
+  --footer-bg: #fdfbff; /* Nền trắng ánh tím cực nhẹ */
+  --text-main: #555;
+}
+
 .aline-footer {
-  background-color: #fffafb; /* Nền hồng pastel cực nhạt */
-  color: #888;
-  font-family: 'Poppins', sans-serif;
-  padding: 60px 0 0;
-  border-top: 3px solid #ffdeeb; /* Viền hồngpastel đậm phía trên */
+  background-color: var(--footer-bg);
+  position: relative;
+  border-top: 1px solid var(--light-purple);
+  padding-bottom: 40px;
+  color: var(--text-main);
 }
 
-.footer-content-wrapper {
+.footer-purple-strip {
+  height: 5px;
+  background-color: var(--primary-purple);
+  width: 100%;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px 0;
+}
+
+.footer-content {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 50px;
-  padding-bottom: 50px;
+  grid-template-columns: 1fr 2fr 1.5fr; /* Chia 3 cột cân đối */
+  gap: 40px;
 }
 
-.footer-logo { height: 40px; margin-bottom: 10px; }
-.footer-slogan { font-style: italic; font-size: 14px; color: #aaa; }
+/* Cột trái */
+.footer-logo-img {
+  height: 80px;
+  margin-bottom: 20px;
+}
 
-.contact-info-list p {
+.footer-copyright {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #888;
+}
+
+/* Cột giữa */
+.footer-middle {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-column-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: var(--dark-purple);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  list-style: none !important; /* Xóa dấu chấm tròn */
+  padding: 0 !important;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--primary-purple);
+  padding-left: 5px;
+}
+
+/* Cột phải: Social & Map */
+.footer-social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  background-color: var(--light-purple);
+  color: var(--primary-purple);
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 10px 0;
-  font-size: 14px;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.contact-info-list i { color: #ff99cc; } /* Icon hồng pastel */
-.contact-info-list a { color: #ff99cc; text-decoration: none; }
-
-.map-embed { margin-top: 20px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-
-.contact-form-column p { font-size: 14px; margin-bottom: 20px; }
-
-.aline-contact-form { display: flex; flex-direction: column; gap: 15px; }
-
-.form-row { display: flex; gap: 15px; }
-
-/* Input field màu hồngpastel nhẹ (Tone reference 2) */
-.pastel-input {
-  width: 100%;
-  padding: 12px 15px;
-  background-color: #fffafc; /* Nền input hồng cực nhạt */
-  border: 1px solid #ffdeeb;
-  border-radius: 20px;
-  outline: none;
-  color: #888;
-  transition: all 0.3s;
+.social-icon:hover {
+  background-color: var(--primary-purple);
+  color: white;
+  transform: translateY(-3px);
 }
 
-.pastel-input:focus {
-  border-color: #ff99cc; /* Chuyển viền hồng đậm khi focus */
-  box-shadow: 0 0 10px rgba(255, 153, 204, 0.2); /* Lấp lánh */
+.footer-map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--light-purple);
 }
 
-.aline-submit-btn {
-  background-color: #ff99cc; /* Màu hồngpastel tươi */
-  color: #fff;
-  border: none;
-  padding: 10px 30px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s;
-  box-shadow: 0 2px 5px rgba(255, 153, 204, 0.3);
-}
-
-/* Hiệu ứng lấp lánh khi hover nút Gửi */
-.aline-submit-btn:hover {
-  background-color: #ff66b2; /* Chuyển hồng đậm */
-  box-shadow: 0 4px 15px rgba(255, 102, 178, 0.4); /* Lấp lánh mạnh hơn */
-}
-
-.footer-bottom-strip {
-  background-color: #ffdeeb; /* Hồng pastel đậm cho dải đáy */
+.footer-map-link {
+  display: block;
+  background: var(--light-purple);
+  color: var(--dark-purple);
   text-align: center;
-  padding: 10px 0;
+  padding: 8px;
+  text-decoration: none;
   font-size: 12px;
-  color: #888;
+  font-weight: 600;
+}
+
+/* Nút Chat nổi */
+.footer-chat-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary-purple);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 5px 15px rgba(188, 160, 220, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.footer-chat-icon:hover {
+  transform: scale(1.1) rotate(-10deg);
+  background-color: var(--dark-purple);
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-middle {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-social-icons {
+    justify-content: center;
+  }
 }
