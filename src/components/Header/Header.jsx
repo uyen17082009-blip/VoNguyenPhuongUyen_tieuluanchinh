@@ -10,29 +10,25 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Dữ liệu ngôn ngữ
+  // Dữ liệu đa ngôn ngữ
   const trans = {
     VN: {
       freeShip: "Miễn phí giao hàng đơn từ 500k",
-      hotline: "1800 1708",
       search: "Tìm kiếm mỹ phẩm...",
       login: "Đăng nhập",
       hello: "Chào",
       cart: "Giỏ hàng",
-      logout: "Đăng xuất",
-      account: "Tài khoản",
-      menu: ["TRANG CHỦ", "CHĂM SÓC DA", "CHĂM SÓC TÓC", "TRANG ĐIỂM", "SẢN PHẨM MỚI", "KHUYẾN MÃI"]
+      menu: ["TRANG CHỦ", "CHĂM SÓC DA", "CHĂM SÓC TÓC", "TRANG ĐIỂM", "SẢN PHẨM MỚI", "KHUYẾN MÃI"],
+      skincareSub: ["Sữa Rửa Mặt", "Serum & Đặc Trị", "Kem Dưỡng Ẩm", "Mặt Nạ"]
     },
     EN: {
       freeShip: "Free shipping on orders over 500k",
-      hotline: "1800 1708",
-      search: "Search beauty products...",
+      search: "Search products...",
       login: "Login",
       hello: "Hi",
       cart: "Cart",
-      logout: "Logout",
-      account: "Account",
-      menu: ["HOME", "SKINCARE", "HAIRCARE", "MAKEUP", "NEW ARRIVALS", "PROMOTIONS"]
+      menu: ["HOME", "SKINCARE", "HAIRCARE", "MAKEUP", "NEW ARRIVALS", "PROMOTIONS"],
+      skincareSub: ["Cleanser", "Serum & Treatment", "Moisturizer", "Mask"]
     }
   };
 
@@ -55,12 +51,6 @@ const Header = () => {
     };
   }, [syncStore]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('currentUser');
-    window.dispatchEvent(new Event('userUpdated'));
-    navigate('/');
-  };
-
   const currentData = trans[currentLang];
 
   return (
@@ -70,14 +60,14 @@ const Header = () => {
         <div className="header-container">
           <div className="top-bar-left">
             <span>{currentData.freeShip}</span>
-            <span className="lang-separator">|</span>
-            <i className="fa-solid fa-phone-volume"></i> {currentData.hotline}
+            <span className="divider">|</span>
+            <i className="fa-solid fa-phone"></i> 1800 1708
           </div>
           <div className="top-bar-right">
             <div className="language-picker">
-              <span className={currentLang === 'VN' ? 'lang-btn active' : 'lang-btn'} onClick={() => setCurrentLang('VN')}>VN</span>
-              <span className="lang-separator">|</span>
-              <span className={currentLang === 'EN' ? 'lang-btn active' : 'lang-btn'} onClick={() => setCurrentLang('EN')}>EN</span>
+              <span className={`lang-btn ${currentLang === 'VN' ? 'active' : ''}`} onClick={() => setCurrentLang('VN')}>VN</span>
+              <span className="divider">|</span>
+              <span className={`lang-btn ${currentLang === 'EN' ? 'active' : ''}`} onClick={() => setCurrentLang('EN')}>EN</span>
             </div>
           </div>
         </div>
@@ -96,23 +86,17 @@ const Header = () => {
           </div>
 
           <div className="header-actions">
-            <div className="action-group user-group">
+            <div className="action-item">
               <i className="fa-regular fa-circle-user purple-icon"></i>
               {currentUser ? (
-                <div className="user-logged-in">
-                  <span className="action-label">{currentData.hello}, {currentUser.name || 'User'}</span>
-                  <div className="dropdown-content shadow">
-                    <Link to="/profile">{currentData.account}</Link>
-                    <button onClick={handleLogout}>{currentData.logout}</button>
-                  </div>
-                </div>
+                <span className="action-label">{currentData.hello}, {currentUser.name || 'User'}</span>
               ) : (
-                <Link to="/login" className="login-link action-label">{currentData.login}</Link>
+                <Link to="/login" className="action-label">{currentData.login}</Link>
               )}
             </div>
 
-            <Link to="/cart" className="action-group header-cart">
-              <div className="cart-icon-box">
+            <Link to="/cart" className="action-item header-cart">
+              <div className="cart-icon-wrapper">
                 <i className="fa-solid fa-basket-shopping purple-icon"></i>
                 <span className="cart-badge">{cartCount}</span>
               </div>
@@ -128,13 +112,14 @@ const Header = () => {
           <ul className="nav-list">
             {currentData.menu.map((text, index) => (
               <li key={index} className="nav-item">
-                <Link to="/" className="nav-link">{text} {index === 1 && <i className="fa-solid fa-chevron-down"></i>}</Link>
+                <Link to="/" className="nav-link">
+                  {text} {index === 1 && <i className="fa-solid fa-chevron-down arrow-icon"></i>}
+                </Link>
                 {index === 1 && (
-                  <ul className="submenu shadow">
-                    <li><Link to="/">{currentLang === 'VN' ? 'Sữa Rửa Mặt' : 'Cleanser'}</Link></li>
-                    <li><Link to="/">{currentLang === 'VN' ? 'Serum & Đặc Trị' : 'Serum & Treatment'}</Link></li>
-                    <li><Link to="/">{currentLang === 'VN' ? 'Kem Dưỡng Ẩm' : 'Moisturizer'}</Link></li>
-                    <li><Link to="/">{currentLang === 'VN' ? 'Mặt Nạ' : 'Mask'}</Link></li>
+                  <ul className="submenu">
+                    {currentData.skincareSub.map((sub, i) => (
+                      <li key={i}><Link to="/">{sub}</Link></li>
+                    ))}
                   </ul>
                 )}
               </li>
