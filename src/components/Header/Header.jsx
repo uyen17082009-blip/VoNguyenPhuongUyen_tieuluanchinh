@@ -10,7 +10,6 @@ const Header = () => {
   const location = useLocation();
 
   const syncStore = useCallback(() => {
-    // Cập nhật giỏ hàng
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       try {
@@ -20,7 +19,6 @@ const Header = () => {
       } catch (e) { setCartCount(0); }
     } else { setCartCount(0); }
 
-    // Cập nhật User
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
       try { setCurrentUser(JSON.parse(savedUser)); } 
@@ -73,7 +71,7 @@ const Header = () => {
           <div className="top-bar-left">
             <span>Miễn phí giao hàng đơn từ 500k</span>
             <span className="separator">|</span>
-            <i className="fa-solid fa-phone-volume"></i> 1800 1708
+            <i className="fa-solid fa-phone"></i> 1800 1708
           </div>
           <div className="top-bar-right">
             <div className="language-picker">
@@ -92,48 +90,42 @@ const Header = () => {
 
           <div className="header-search">
             <input type="text" placeholder="Tìm kiếm mỹ phẩm..." />
-            <button><i className="fas fa-search"></i></button>
+            <button><i className="fa-solid fa-magnifying-glass"></i></button>
           </div>
 
           <div className="header-actions">
-            {/* User Section */}
-            <div className="user-account-group">
-              <i className="fa-regular fa-circle-user icon-main"></i>
-              <div className="user-info">
-                {currentUser ? (
-                  <div className="user-logged-in">
-                    <span className="user-name">Chào, {currentUser.name || 'Bạn'}</span>
-                    <div className="user-dropdown">
-                      <Link to="/profile">Tài khoản</Link>
-                      <button onClick={handleLogout}>Đăng xuất</button>
-                    </div>
+            <div className="action-item user-group">
+              <i className="fa-regular fa-circle-user icon-purple"></i>
+              {currentUser ? (
+                <div className="user-logged-in">
+                  <span className="action-text">Chào, {currentUser.name || 'Bạn'}</span>
+                  <div className="user-dropdown">
+                    <Link to="/profile">Tài khoản</Link>
+                    <button onClick={handleLogout}>Đăng xuất</button>
                   </div>
-                ) : (
-                  <Link to="/login" className="login-link">Đăng nhập</Link>
-                )}
-              </div>
+                </div>
+              ) : (
+                <Link to="/login" className="login-link action-text">Đăng nhập</Link>
+              )}
             </div>
 
-            {/* Cart Section */}
-            <Link to="/cart" className="header-cart">
+            <Link to="/cart" className="action-item header-cart">
               <div className="cart-icon-wrapper">
-                <i className="fa-solid fa-bag-shopping icon-main"></i>
+                <i className="fa-solid fa-bag-shopping icon-purple"></i>
                 <span className="cart-badge">{cartCount}</span>
               </div>
-              <div className="cart-text">
-                <span className="cart-label">Giỏ hàng</span>
-              </div>
+              <span className="action-text">Giỏ hàng</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Nav Section */}
+      {/* Navigation */}
       <nav className="header-nav">
         <div className="header-container">
           <ul className="nav-list">
             {menuItems.map((item, index) => (
-              <li key={index} className={`nav-item ${item.submenu ? 'has-submenu' : ''}`}>
+              <li key={index} className="nav-item">
                 <Link to={item.path} className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}>
                   {item.text}
                   {item.submenu && <i className="fa-solid fa-chevron-down arrow-icon"></i>}
