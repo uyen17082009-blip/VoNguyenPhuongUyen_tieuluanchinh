@@ -9,7 +9,6 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Hàm cập nhật dữ liệu từ LocalStorage
   const syncStore = useCallback(() => {
     // Cập nhật giỏ hàng
     const savedCart = localStorage.getItem('cart');
@@ -18,34 +17,22 @@ const Header = () => {
         const cart = JSON.parse(savedCart);
         const total = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
         setCartCount(total);
-      } catch (e) {
-        setCartCount(0);
-      }
-    } else {
-      setCartCount(0);
-    }
+      } catch (e) { setCartCount(0); }
+    } else { setCartCount(0); }
 
     // Cập nhật User
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
-      try {
-        setCurrentUser(JSON.parse(savedUser));
-      } catch (e) {
-        setCurrentUser(null);
-      }
-    } else {
-      setCurrentUser(null);
-    }
+      try { setCurrentUser(JSON.parse(savedUser)); } 
+      catch (e) { setCurrentUser(null); }
+    } else { setCurrentUser(null); }
   }, []);
 
   useEffect(() => {
     syncStore();
-
-    // Lắng nghe các sự kiện tùy chỉnh và sự kiện thay đổi storage từ tab khác
     window.addEventListener('cartUpdated', syncStore);
     window.addEventListener('userUpdated', syncStore);
     window.addEventListener('storage', syncStore);
-
     return () => {
       window.removeEventListener('cartUpdated', syncStore);
       window.removeEventListener('userUpdated', syncStore);
@@ -80,15 +67,14 @@ const Header = () => {
 
   return (
     <header className="aline-header">
-      {/* Top Bar: Hotline & Thông tin chung */}
+      {/* Top Bar */}
       <div className="header-top-bar">
         <div className="header-container">
           <div className="top-bar-left">
             <span>Miễn phí giao hàng đơn từ 500k</span>
             <span className="separator">|</span>
-            <i className="fas fa-phone-alt"></i> 1800 1708
+            <i className="fa-solid fa-phone-volume"></i> 1800 1708
           </div>
-          
           <div className="top-bar-right">
             <div className="language-picker">
               <span className="active">VN</span> | <span>EN</span>
@@ -97,7 +83,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Header: Logo, Search, Actions */}
+      {/* Main Header */}
       <div className="header-main">
         <div className="header-container">
           <div className="header-logo" onClick={() => navigate('/')}>
@@ -105,52 +91,53 @@ const Header = () => {
           </div>
 
           <div className="header-search">
-            <input type="text" placeholder="Tìm kiếm sản phẩm..." />
+            <input type="text" placeholder="Tìm kiếm mỹ phẩm..." />
             <button><i className="fas fa-search"></i></button>
           </div>
 
           <div className="header-actions">
+            {/* User Section */}
             <div className="user-account-group">
-              <i className="fas fa-user-circle"></i>
-              {currentUser ? (
-                <div className="user-logged-in">
-                  <span className="user-name">Chào, {currentUser.name || 'Bạn'}</span>
-                  <div className="user-dropdown">
-                    <Link to="/profile">Tài khoản</Link>
-                    <Link to="/orders">Đơn hàng</Link>
-                    <button onClick={handleLogout}>Đăng xuất</button>
+              <i className="fa-regular fa-circle-user icon-main"></i>
+              <div className="user-info">
+                {currentUser ? (
+                  <div className="user-logged-in">
+                    <span className="user-name">Chào, {currentUser.name || 'Bạn'}</span>
+                    <div className="user-dropdown">
+                      <Link to="/profile">Tài khoản</Link>
+                      <button onClick={handleLogout}>Đăng xuất</button>
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <Link to="/login" className="login-link">Đăng nhập / Đăng ký</Link>
-              )}
+                ) : (
+                  <Link to="/login" className="login-link">Đăng nhập</Link>
+                )}
+              </div>
             </div>
 
+            {/* Cart Section */}
             <Link to="/cart" className="header-cart">
               <div className="cart-icon-wrapper">
-                <i className="fas fa-shopping-bag"></i>
+                <i className="fa-solid fa-bag-shopping icon-main"></i>
                 <span className="cart-badge">{cartCount}</span>
               </div>
-              <span className="cart-label">Giỏ hàng</span>
+              <div className="cart-text">
+                <span className="cart-label">Giỏ hàng</span>
+              </div>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Navigation Bar */}
+      {/* Nav Section */}
       <nav className="header-nav">
         <div className="header-container">
           <ul className="nav-list">
             {menuItems.map((item, index) => (
               <li key={index} className={`nav-item ${item.submenu ? 'has-submenu' : ''}`}>
-                <Link 
-                  to={item.path} 
-                  className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-                >
+                <Link to={item.path} className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}>
                   {item.text}
-                  {item.submenu && <i className="fas fa-chevron-down icon-arrow"></i>}
+                  {item.submenu && <i className="fa-solid fa-chevron-down arrow-icon"></i>}
                 </Link>
-                
                 {item.submenu && (
                   <ul className="submenu">
                     {item.submenu.map((sub, idx) => (
