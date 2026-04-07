@@ -13,12 +13,12 @@
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1250px; /* Tăng chiều rộng tối đa một chút */
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
 /* 1. TOP BAR */
@@ -35,39 +35,54 @@
 .lang-btn.active { font-weight: bold; color: var(--primary); text-decoration: underline; }
 
 /* 2. MAIN HEADER */
-.header-main { padding: 15px 0; background: #fff; }
-
-.header-logo img {
-  height: 70px; /* Logo to cân đối */
-  cursor: pointer;
+.header-main { 
+  padding: 20px 0; /* Tăng padding để tạo không gian cho logo to hơn */
+  background: #fff; 
 }
 
+/* --- ĐÃ CẬP NHẬT: LOGO TO HƠN VÀ CÂN ĐỐI --- */
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 150px; /* Định nghĩa chiều rộng cố định cho khung logo */
+}
+
+.header-logo img {
+  height: 85px; /* Tăng kích thước cực đại cho cân đối */
+  width: auto;
+  cursor: pointer;
+  object-fit: contain; /* Đảm bảo logo không bị méo */
+}
+/* --------------------------------------------- */
+
 .header-search {
-  flex: 0 1 450px;
+  flex: 0 1 500px; /* Tăng chiều rộng thanh tìm kiếm để cân đối với logo */
   display: flex;
   border: 2px solid var(--bg-light);
   border-radius: 30px;
   overflow: hidden;
+  margin: 0 30px; /* Tăng khoảng cách lề */
 }
 
-.header-search input { flex: 1; padding: 10px 20px; border: none; outline: none; }
-.header-search button { background: var(--primary); color: #fff; border: none; padding: 0 20px; cursor: pointer; }
+.header-search input { flex: 1; padding: 12px 25px; border: none; outline: none; }
+.header-search button { background: var(--primary); color: #fff; border: none; padding: 0 25px; cursor: pointer; }
 
-.header-actions { display: flex; gap: 25px; }
-.action-item { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
-.purple-icon { font-size: 24px; color: var(--primary); }
-.action-label { font-size: 14px; font-weight: 500; }
+.header-actions { display: flex; gap: 30px; align-items: center; } /* Tăng GAP và căn giữa */
+.action-item { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.purple-icon { font-size: 26px; color: var(--primary); } /* Tăng nhẹ size icon */
+.action-label { font-size: 15px; font-weight: 500; }
 
 .cart-icon-wrapper { position: relative; }
 .cart-badge {
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -12px;
+  right: -12px;
   background: #ff85b2;
   color: #fff;
   font-size: 10px;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,7 +97,7 @@
 
 .nav-link {
   display: block;
-  padding: 15px 20px;
+  padding: 18px 25px; /* Tăng padding để cân đối với main header to hơn */
   text-decoration: none;
   color: var(--text);
   font-weight: 600;
@@ -100,12 +115,12 @@
   left: 50%; /* Căn lề trái 50% */
   transform: translateX(-50%); /* Đẩy ngược lại 50% chiều ngang của chính nó để vào giữa */
   background: #fff;
-  min-width: 220px;
+  min-width: 230px; /* Tăng nhẹ min-width */
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   border-radius: 0 0 8px 8px;
   z-index: 1000;
   border-top: 3px solid var(--primary);
-  padding: 8px 0 !important;
+  padding: 10px 0 !important;
 }
 
 .nav-item:hover .submenu {
@@ -115,7 +130,7 @@
 
 .submenu li a {
   display: block;
-  padding: 12px 25px !important;
+  padding: 12px 28px !important; /* Tăng nhẹ padding */
   color: var(--text);
   text-decoration: none;
   font-size: 14px;
@@ -128,7 +143,7 @@
 .submenu li a:hover {
   background: var(--bg-light) !important;
   color: var(--primary) !important;
-  padding-left: 30px !important;
+  padding-left: 33px !important;
 }
 
 @keyframes slideDown {
