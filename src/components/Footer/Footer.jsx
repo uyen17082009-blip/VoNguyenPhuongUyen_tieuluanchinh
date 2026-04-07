@@ -1,47 +1,49 @@
 import React from 'react';
 import './Footer.css';
-import logoImage from '../../img/logo.png'; // Đã sửa tên biến cho khớp với import
+import logoImage from '../../img/logo.png';
 
 const Footer = () => {
     return (
         <footer className="aline-footer">
-            {/* Thanh màu tím dải trên cùng của footer */}
             <div className="footer-purple-strip"></div>
             
             <div className="footer-container">
                 <div className="footer-content">
-                    {/* Cột trái: Logo & Copyright */}
+                    {/* Cột trái: Logo lớn & Bản quyền */}
                     <div className="footer-left">
                         <div className="footer-logo">
                             <img src={logoImage} alt="Aline Beauty" className='footer-logo-img' />
                         </div>
                         <p className="footer-copyright">
-                            ©2026 Aline Beauty. <br/> All rights reserved
+                            ©2026 Aline Beauty. <br/> 
+                            Tận tâm chăm sóc vẻ đẹp Việt. <br/>
+                            All rights reserved.
                         </p>
                     </div>
 
-                    {/* Cột giữa: Các liên kết */}
+                    {/* Cột giữa: Các liên kết hệ thống */}
                     <div className="footer-middle">
                         <div className="footer-column">
                             <h3 className="footer-column-title">Về Aline Beauty</h3>
                             <ul className="footer-links">
-                                <li><a href="/origin">Nguồn gốc</a></li>
-                                <li><a href="/services">Dịch vụ</a></li>
-                                <li><a href="/careers">Nghề nghiệp</a></li>
-                                <li><a href="/contact">Liên hệ</a></li>
+                                <li><a href="/origin">Nguồn gốc thương hiệu</a></li>
+                                <li><a href="/services">Dịch vụ khách hàng</a></li>
+                                <li><a href="/careers">Cơ hội nghề nghiệp</a></li>
+                                <li><a href="/contact">Liên hệ hỗ trợ</a></li>
                             </ul>
                         </div>
                         <div className="footer-column">
                             <h3 className="footer-column-title">Hệ thống cửa hàng</h3>
                             <ul className="footer-links">
-                                <li><a href="/find-store">Tìm cửa hàng gần đây</a></li>
+                                <li><a href="/find-store">Tìm cửa hàng gần bạn</a></li>
+                                <li><a href="/policy">Chính sách đổi trả</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Cột phải: Social & Map */}
+                    {/* Cột phải: Mạng xã hội & Bản đồ */}
                     <div className="footer-right">
-                        <h3 className="footer-column-title">THEO DÕI CHÚNG TÔI</h3>
+                        <h3 className="footer-column-title">KẾT NỐI VỚI CHÚNG TÔI</h3>
                         <div className="footer-social-icons">
                             <a href="https://facebook.com" className='social-icon' aria-label='Facebook'>
                                 <i className='fab fa-facebook-f'></i>
@@ -58,11 +60,10 @@ const Footer = () => {
                         </div>
                         
                         <div className="footer-map-container">
-                             {/* Fix lỗi style="border:0" trong React phải dùng {{ border: 0 }} */}
                             <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.9244039209105!2d105.81645407503176!3d21.03571058061543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab145bf51903%3A0xdc771536965157ba!2zTmjDoCBIw6F0IEzhu5tuIEjDoCBO4buZaQ!5e0!3m2!1svi!2svn!4v1700000000000!5m2!1svi!2svn" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.460232428333!2d106.6647915757359!3d10.776019359200057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752edca3161047%3A0xc3f94689456209d6!2zMzg1IFTDtCBIaeG6v24gVGjDoG5oLCBQaMaw4budbmcgMTQsIFF14bqtbiAxMCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
                                 width="100%" 
-                                height="150" 
+                                height="120" 
                                 style={{ border: 0 }} 
                                 allowFullScreen="" 
                                 loading="lazy" 
@@ -74,15 +75,15 @@ const Footer = () => {
                                 target="_blank"
                                 rel='noopener noreferrer'
                             >
-                                <i className="fas fa-map-marker-alt"></i> Mở trong Google Maps
+                                <i className="fas fa-location-dot"></i> Xem trên Google Maps
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Nút Chat nổi */}
-            <div className="footer-chat-icon" title='Chat với chúng tôi'>
+            {/* Nút Chat tròn */}
+            <div className="footer-chat-button">
                 <i className='fas fa-comment-dots'></i>
             </div>
         </footer>
