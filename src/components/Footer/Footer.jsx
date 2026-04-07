@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-left">
                     <div className="footer-logo">
-                        <img src={logo} alt="Highlands Coffee" className='footer-logo-img' />
+                        <img src={logoImage} alt="Highlands Coffee" className='footer-logo-img' />
                     </div>
                     <p className="footer-copyright">
                         ©2026 Aline Beauty. All rights reserved
