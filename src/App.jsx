@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
-import Footer from "./components/Footer/Footer.jsx"; // Thêm dòng này
+import Footer from "./components/Footer/Footer.jsx";
 
 export default function App() {
   const [page, setPage] = useState("login");
@@ -9,8 +9,8 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
-      {/* Nội dung trang web của bạn sẽ nằm ở đây */}
-      <Footer /> {/* Thêm dòng này */}
+
+      <Footer /> 
     </BrowserRouter>
   );
 }
