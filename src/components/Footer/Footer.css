@@ -33,22 +33,31 @@
 }
 
 /* CỘT TRÁI - LOGO TO */
+./* Căn chỉnh cột trái để đẩy bản quyền xuống đáy */
 .footer-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Đẩy logo lên trên, chữ xuống dưới */
+  min-height: 180px; /* Tạo khoảng không gian cho cột */
   flex: 1;
-  min-width: 250px;
 }
 
-.footer-logo-img {
-  height: 110px; /* Logo to rõ nét, cân đối */
-  width: auto;
-  margin-bottom: 25px;
-  object-fit: contain;
-}
-
+/* Định dạng dòng chữ bản quyền */
 .footer-copyright {
   font-size: 14px;
   line-height: 1.8;
   color: #999;
+  margin-top: auto; /* Đảm bảo luôn nằm ở dưới cùng của cột */
+  padding-bottom: 5px;
+}
+
+/* Đảm bảo Logo không bị dính sát vào chữ */
+.footer-logo-img {
+  height: 110px; 
+  width: auto;
+  margin-bottom: 20px;
+  display: block;
+  object-fit: contain;
 }
 
 /* CỘT GIỮA - LINKS */
