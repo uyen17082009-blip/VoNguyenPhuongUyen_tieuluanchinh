@@ -1,61 +1,125 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import logoImage from '../../img/logo.png';
 
-const Header = ({ lang, setLang, t }) => {
+const Header = () => {
+  const [currentLang, setCurrentLang] = useState('VN');
+  const [cartCount, setCartCount] = useState(0);
+  const [currentUser, setCurrentUser] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Dữ liệu đa ngôn ngữ
+  const trans = {
+    VN: {
+      freeShip: "Miễn phí giao hàng đơn từ 500k",
+      search: "Tìm kiếm mỹ phẩm...",
+      login: "Đăng nhập",
+      hello: "Chào",
+      cart: "Giỏ hàng",
+      menu: ["TRANG CHỦ", "CHĂM SÓC DA", "CHĂM SÓC TÓC", "TRANG ĐIỂM", "SẢN PHẨM MỚI", "KHUYẾN MÃI"],
+      skincareSub: ["Sữa Rửa Mặt", "Serum & Đặc Trị", "Kem Dưỡng Ẩm", "Mặt Nạ"]
+    },
+    EN: {
+      freeShip: "Free shipping on orders over 500k",
+      search: "Search products...",
+      login: "Login",
+      hello: "Hi",
+      cart: "Cart",
+      menu: ["HOME", "SKINCARE", "HAIRCARE", "MAKEUP", "NEW ARRIVALS", "PROMOTIONS"],
+      skincareSub: ["Cleanser", "Serum & Treatment", "Moisturizer", "Mask"]
+    }
+  };
+
+  const syncStore = useCallback(() => {
+    const savedCart = localStorage.getItem('cart');
+    setCartCount(savedCart ? JSON.parse(savedCart).reduce((sum, item) => sum + (item.quantity || 0), 0) : 0);
+    const savedUser = localStorage.getItem('currentUser');
+    setCurrentUser(savedUser ? JSON.parse(savedUser) : null);
+  }, []);
+
+  useEffect(() => {
+    syncStore();
+    window.addEventListener('storage', syncStore);
+    window.addEventListener('cartUpdated', syncStore);
+    window.addEventListener('userUpdated', syncStore);
+    return () => {
+      window.removeEventListener('storage', syncStore);
+      window.removeEventListener('cartUpdated', syncStore);
+      window.removeEventListener('userUpdated', syncStore);
+    };
+  }, [syncStore]);
+
+  const currentData = trans[currentLang];
+
   return (
     <header className="aline-header">
+      {/* Top Bar */}
       <div className="header-top-bar">
         <div className="header-container">
           <div className="top-bar-left">
-            <span>{t.freeShip}</span>
+            <span>{currentData.freeShip}</span>
             <span className="divider">|</span>
             <i className="fa-solid fa-phone"></i> 1800 1708
           </div>
           <div className="top-bar-right">
             <div className="language-picker">
-              <span className={`lang-btn ${lang === 'VN' ? 'active' : ''}`} onClick={() => setLang('VN')}>VN</span>
+              <span className={`lang-btn ${currentLang === 'VN' ? 'active' : ''}`} onClick={() => setCurrentLang('VN')}>VN</span>
               <span className="divider">|</span>
-              <span className={`lang-btn ${lang === 'EN' ? 'active' : ''}`} onClick={() => setLang('EN')}>EN</span>
+              <span className={`lang-btn ${currentLang === 'EN' ? 'active' : ''}`} onClick={() => setCurrentLang('EN')}>EN</span>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Main Header */}
       <div className="header-main">
         <div className="header-container">
-          <div className="header-logo"><img src={logoImage} alt="Aline Beauty" /></div>
+          <div className="header-logo" onClick={() => navigate('/')}>
+            <img src={logoImage} alt="Aline Beauty" />
+          </div>
+
           <div className="header-search">
-            <input type="text" placeholder={t.search} />
+            <input type="text" placeholder={currentData.search} />
             <button><i className="fa-solid fa-magnifying-glass"></i></button>
           </div>
+
           <div className="header-actions">
             <div className="action-item">
               <i className="fa-regular fa-circle-user purple-icon"></i>
-              <span className="action-label">{t.login}</span>
+              {currentUser ? (
+                <span className="action-label">{currentData.hello}, {currentUser.name || 'User'}</span>
+              ) : (
+                <Link to="/login" className="action-label">{currentData.login}</Link>
+              )}
             </div>
-            <div className="action-item header-cart">
+
+            <Link to="/cart" className="action-item header-cart">
               <div className="cart-icon-wrapper">
                 <i className="fa-solid fa-basket-shopping purple-icon"></i>
-                <span className="cart-badge">0</span>
+                <span className="cart-badge">{cartCount}</span>
               </div>
-              <span className="action-label">{t.cart}</span>
-            </div>
+              <span className="action-label">{currentData.cart}</span>
+            </Link>
           </div>
         </div>
       </div>
 
+      {/* Navigation */}
       <nav className="header-nav">
         <div className="header-container">
           <ul className="nav-list">
-            {t.menu.map((text, index) => (
+            {currentData.menu.map((text, index) => (
               <li key={index} className="nav-item">
-                <a href="#" className="nav-link">
+                <Link to="/" className="nav-link">
                   {text} {index === 1 && <i className="fa-solid fa-chevron-down arrow-icon"></i>}
-                </a>
+                </Link>
                 {index === 1 && (
                   <ul className="submenu">
-                    {t.skincareSub.map((sub, i) => <li key={i}><a href="#">{sub}</a></li>)}
+                    {currentData.skincareSub.map((sub, i) => (
+                      <li key={i}><Link to="/">{sub}</Link></li>
+                    ))}
                   </ul>
                 )}
               </li>
