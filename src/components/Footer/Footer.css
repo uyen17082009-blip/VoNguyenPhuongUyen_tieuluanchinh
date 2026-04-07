@@ -1,71 +1,67 @@
 .aline-footer {
-  background-color: #ffdeeb; /* Nền hồng pastel nhạt */
-  padding: 50px 0 0;
-  color: #666;
-  margin-top: 50px;
+  background-color: #fff5f8;
+  padding: 60px 0 0;
+  border-top: 3px solid #ffdeeb;
 }
 
-.footer-container {
+.footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 40px;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
 }
 
-.footer-logo {
-  height: 40px;
-  margin-bottom: 15px;
+.footer-logo { height: 50px; margin-bottom: 20px; }
+
+.footer-title {
+  color: #ff66b2;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-left: 4px solid #ff99cc;
+  padding-left: 10px;
 }
 
-.brand-slogan {
-  font-style: italic;
-  font-size: 14px;
-}
-
-.social-links {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.social-links a {
-  color: #fff;
-  background-color: #ff99cc; /* Màu icon hồng */
-  width: 30px;
-  height: 30px;
+.social-group a {
+  display: inline-flex;
+  width: 35px; height: 35px;
+  background: white;
+  color: #ff99cc;
   border-radius: 50%;
-  display: flex;
+  margin-right: 10px;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
 
-.links-section h4 {
-  color: #ff3399; /* Tiêu đề màu hồng đậm */
-  font-size: 16px;
+.social-group a:hover { background: #ff99cc; color: white; transform: translateY(-3px); }
+
+.newsletter-form {
+  display: flex;
+  margin-top: 15px;
 }
 
-.links-section ul {
-  list-style: none;
-  padding: 0;
+.newsletter-form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ffdeeb;
+  border-radius: 5px 0 0 5px;
+  outline: none;
 }
 
-.links-section a {
-  color: #666;
-  text-decoration: none;
-  line-height: 2;
-  font-size: 14px;
-  transition: color 0.3s;
+.newsletter-form button {
+  background: #ff99cc;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 
-.links-section a:hover {
-  color: #ff99cc; /* Hồng pastel khi hover */
-}
-
-.footer-bottom {
-  background-color: #ffb3d9; /* Hồng pastel đậm hơn một chút cho đáy */
-  color: #fff;
-  padding: 10px 0;
+.footer-copy {
+  background: #ffdeeb;
   text-align: center;
-  font-size: 12px;
+  padding: 15px 0;
+  font-size: 13px;
+  color: #888;
 }
