@@ -19,7 +19,12 @@ const Header = () => {
       hello: "Chào",
       cart: "Giỏ hàng",
       menu: ["TRANG CHỦ", "CHĂM SÓC DA", "CHĂM SÓC TÓC", "TRANG ĐIỂM", "SẢN PHẨM MỚI", "KHUYẾN MÃI"],
-      skincareSub: ["Sữa Rửa Mặt", "Serum & Đặc Trị", "Kem Dưỡng Ẩm", "Mặt Nạ"]
+      skincareSub: ["Sữa Rửa Mặt", "Serum & Đặc Trị", "Kem Dưỡng Ẩm", "Mặt Nạ"],
+      footerAbout: "Về Aline Beauty",
+      footerLinks: ["Nguồn gốc", "Dịch vụ", "Nghề nghiệp", "Liên hệ"],
+      footerStore: "Hệ thống cửa hàng",
+      footerFollow: "THEO DÕI CHÚNG TÔI",
+      copyright: "©2026 Aline Beauty. Tận tâm chăm sóc vẻ đẹp Việt. All rights reserved."
     },
     EN: {
       freeShip: "Free shipping on orders over 500k",
@@ -28,7 +33,12 @@ const Header = () => {
       hello: "Hi",
       cart: "Cart",
       menu: ["HOME", "SKINCARE", "HAIRCARE", "MAKEUP", "NEW ARRIVALS", "PROMOTIONS"],
-      skincareSub: ["Cleanser", "Serum & Treatment", "Moisturizer", "Mask"]
+      skincareSub: ["Cleanser", "Serum & Treatment", "Moisturizer", "Mask"],
+      footerAbout: "About Aline Beauty",
+      footerLinks: ["Origin", "Services", "Careers", "Contact"],
+      footerStore: "Store System",
+      footerFollow: "FOLLOW US",
+      copyright: "©2026 Aline Beauty. Dedicated to Vietnamese beauty. All rights reserved."
     }
   };
 
