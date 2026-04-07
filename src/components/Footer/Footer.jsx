@@ -77,7 +77,7 @@ const Footer = () => {
               <a href="https://tiktok.com" className='social-icon'><i className='fab fa-tiktok'></i></a>
             </div>
             <div className="footer-map-container">
-              <iframe src="about:blank" width="100%" height="120" style={{ border: 0 }} title="map"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d501521.4676604829!2d106.6782761!3d10.8772236!3m2!1i1024!2i768!4f13.1!2m1!1zdHLGsOG7nW5nIGNhbyDEkeG6s25nIGtpbmggdOG6vyBr4bu5IHRodeG6rXQgdHAgaGNt!5e0!3m2!1svi!2s!4v1775448862546!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               <a className='footer-map-link' href="#" target="_blank" rel='noopener noreferrer'>
                 <i className="fas fa-location-dot"></i> {d.mapBtn}
               </a>
