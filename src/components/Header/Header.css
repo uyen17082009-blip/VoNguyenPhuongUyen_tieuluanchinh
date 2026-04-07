@@ -3,10 +3,9 @@
   --bg-light: #f3effa;
   --dark: #8e74ad;
   --text: #444;
-  --white: #fff;
 }
 
-/* RESET TRIỆT ĐỂ DẤU CHẤM */
+/* RESET: Xóa dấu chấm tròn triệt để */
 .aline-header ul, .aline-header li {
   list-style: none !important;
   margin: 0 !important;
@@ -14,7 +13,7 @@
 }
 
 .header-container {
-  max-width: 1250px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -30,26 +29,16 @@
   color: var(--dark);
 }
 
-.lang-separator { margin: 0 8px; color: #ccc; }
+.divider { margin: 0 10px; color: #ccc; }
 
-.language-picker .lang-btn {
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.language-picker .lang-btn.active {
-  font-weight: bold;
-  color: var(--primary);
-  text-decoration: underline;
-}
+.lang-btn { cursor: pointer; transition: 0.3s; }
+.lang-btn.active { font-weight: bold; color: var(--primary); text-decoration: underline; }
 
 /* 2. MAIN HEADER */
-.header-main { padding: 15px 0; background: var(--white); }
+.header-main { padding: 15px 0; background: #fff; }
 
-/* LOGO TO VÀ CÂN ĐỐI */
 .header-logo img {
-  height: 75px; /* Tăng kích thước cực đại cho cân đối */
-  width: auto;
+  height: 70px; /* Logo to cân đối */
   cursor: pointer;
 }
 
@@ -59,56 +48,38 @@
   border: 2px solid var(--bg-light);
   border-radius: 30px;
   overflow: hidden;
-  margin: 0 20px;
 }
 
-.header-search input {
-  flex: 1;
-  padding: 10px 20px;
-  border: none;
-  outline: none;
-}
-
-.header-search button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 0 20px;
-  cursor: pointer;
-}
+.header-search input { flex: 1; padding: 10px 20px; border: none; outline: none; }
+.header-search button { background: var(--primary); color: #fff; border: none; padding: 0 20px; cursor: pointer; }
 
 .header-actions { display: flex; gap: 25px; }
-
-.action-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--text);
-  position: relative;
-}
-
+.action-item { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
 .purple-icon { font-size: 24px; color: var(--primary); }
-
 .action-label { font-size: 14px; font-weight: 500; }
 
-.cart-icon-box { position: relative; }
+.cart-icon-wrapper { position: relative; }
 .cart-badge {
   position: absolute;
   top: -10px;
   right: -10px;
   background: #ff85b2;
-  color: white;
+  color: #fff;
   font-size: 10px;
-  padding: 2px 6px;
-  border-radius: 10px;
-  border: 2px solid white;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
 }
 
-/* 3. NAVIGATION */
+/* 3. NAVIGATION & SUBMENU (Sửa lỗi lệch tâm) */
 .header-nav { border-top: 1px solid #f5f5f5; border-bottom: 2px solid var(--bg-light); }
 .nav-list { display: flex; justify-content: center; }
-.nav-item { position: relative; }
+.nav-item { position: relative; } /* Gốc tọa độ cho submenu */
+
 .nav-link {
   display: block;
   padding: 15px 20px;
@@ -119,40 +90,48 @@
 }
 
 .nav-link:hover { color: var(--primary); }
+.arrow-icon { font-size: 10px; margin-left: 5px; }
 
-/* SUBMENU & DROPDOWN */
-.submenu, .dropdown-content {
+/* SUBMENU */
+.submenu {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
-  background: white;
-  min-width: 200px;
-  padding: 10px 0 !important;
+  left: 50%; /* Căn lề trái 50% */
+  transform: translateX(-50%); /* Đẩy ngược lại 50% chiều ngang của chính nó để vào giữa */
+  background: #fff;
+  min-width: 220px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 0 0 8px 8px;
   z-index: 1000;
   border-top: 3px solid var(--primary);
+  padding: 8px 0 !important;
 }
 
-.shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 0 0 8px 8px; }
-
-.nav-item:hover .submenu, .user-logged-in:hover .dropdown-content {
+.nav-item:hover .submenu {
   display: block;
+  animation: slideDown 0.3s ease forwards;
 }
 
-.submenu li a, .dropdown-content a, .dropdown-content button {
+.submenu li a {
   display: block;
-  padding: 10px 20px;
-  text-decoration: none;
+  padding: 12px 25px !important;
   color: var(--text);
+  text-decoration: none;
   font-size: 14px;
-  border: none;
-  background: none;
-  width: 100%;
   text-align: left;
-  cursor: pointer;
+  transition: 0.2s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.submenu li a:hover, .dropdown-content a:hover, .dropdown-content button:hover {
-  background: var(--bg-light);
-  color: var(--primary);
+.submenu li a:hover {
+  background: var(--bg-light) !important;
+  color: var(--primary) !important;
+  padding-left: 30px !important;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
 }
