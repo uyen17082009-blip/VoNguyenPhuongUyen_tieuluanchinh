@@ -8,8 +8,13 @@ export default function App() {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        {/* main dùng để đẩy footer xuống đáy trang */}
-        <main className="main-content"></main>
+        <main className="main-content">
+          {/* Nội dung trang web sẽ được thêm ở đây */}
+          <div className="container" style={{ minHeight: "50vh", padding: "50px 0", textAlign: "center" }}>
+              <h2>Nội dung trang web Aline Beauty</h2>
+              <p>Trang web đang được xây dựng.</p>
+          </div>
+        </main>
         <Footer />
       </div>
     </BrowserRouter>
