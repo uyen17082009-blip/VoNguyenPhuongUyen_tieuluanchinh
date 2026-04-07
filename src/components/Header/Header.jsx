@@ -1,36 +1,12 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Header.css';
 import logoImage from '../../img/logo.png';
 
-const Header = () => {
-  const [currentLang, setCurrentLang] = useState('VN');
+const Header = ({ currentLang, setCurrentLang, data }) => {
   const [cartCount, setCartCount] = useState(0);
   const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation();
-
-  // Dữ liệu đa ngôn ngữ
-  const trans = {
-    VN: {
-      freeShip: "Miễn phí giao hàng đơn từ 500k",
-      search: "Tìm kiếm mỹ phẩm...",
-      login: "Đăng nhập",
-      hello: "Chào",
-      cart: "Giỏ hàng",
-      menu: ["TRANG CHỦ", "CHĂM SÓC DA", "CHĂM SÓC TÓC", "TRANG ĐIỂM", "SẢN PHẨM MỚI", "KHUYẾN MÃI"],
-      skincareSub: ["Sữa Rửa Mặt", "Serum & Đặc Trị", "Kem Dưỡng Ẩm", "Mặt Nạ"]
-    },
-    EN: {
-      freeShip: "Free shipping on orders over 500k",
-      search: "Search products...",
-      login: "Login",
-      hello: "Hi",
-      cart: "Cart",
-      menu: ["HOME", "SKINCARE", "HAIRCARE", "MAKEUP", "NEW ARRIVALS", "PROMOTIONS"],
-      skincareSub: ["Cleanser", "Serum & Treatment", "Moisturizer", "Mask"]
-    }
-  };
 
   const syncStore = useCallback(() => {
     const savedCart = localStorage.getItem('cart');
@@ -42,24 +18,15 @@ const Header = () => {
   useEffect(() => {
     syncStore();
     window.addEventListener('storage', syncStore);
-    window.addEventListener('cartUpdated', syncStore);
-    window.addEventListener('userUpdated', syncStore);
-    return () => {
-      window.removeEventListener('storage', syncStore);
-      window.removeEventListener('cartUpdated', syncStore);
-      window.removeEventListener('userUpdated', syncStore);
-    };
+    return () => window.removeEventListener('storage', syncStore);
   }, [syncStore]);
-
-  const currentData = trans[currentLang];
 
   return (
     <header className="aline-header">
-      {/* Top Bar */}
       <div className="header-top-bar">
         <div className="header-container">
           <div className="top-bar-left">
-            <span>{currentData.freeShip}</span>
+            <span>{data.freeShip}</span>
             <span className="divider">|</span>
             <i className="fa-solid fa-phone"></i> 1800 1708
           </div>
@@ -73,7 +40,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
       <div className="header-main">
         <div className="header-container">
           <div className="header-logo" onClick={() => navigate('/')}>
@@ -81,7 +47,7 @@ const Header = () => {
           </div>
 
           <div className="header-search">
-            <input type="text" placeholder={currentData.search} />
+            <input type="text" placeholder={data.search} />
             <button><i className="fa-solid fa-magnifying-glass"></i></button>
           </div>
 
@@ -89,9 +55,9 @@ const Header = () => {
             <div className="action-item">
               <i className="fa-regular fa-circle-user purple-icon"></i>
               {currentUser ? (
-                <span className="action-label">{currentData.hello}, {currentUser.name || 'User'}</span>
+                <span className="action-label">{data.hello}, {currentUser.name || 'User'}</span>
               ) : (
-                <Link to="/login" className="action-label">{currentData.login}</Link>
+                <Link to="/login" className="action-label">{data.login}</Link>
               )}
             </div>
 
@@ -100,24 +66,23 @@ const Header = () => {
                 <i className="fa-solid fa-basket-shopping purple-icon"></i>
                 <span className="cart-badge">{cartCount}</span>
               </div>
-              <span className="action-label">{currentData.cart}</span>
+              <span className="action-label">{data.cart}</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Navigation */}
       <nav className="header-nav">
         <div className="header-container">
           <ul className="nav-list">
-            {currentData.menu.map((text, index) => (
+            {data.menu.map((text, index) => (
               <li key={index} className="nav-item">
                 <Link to="/" className="nav-link">
                   {text} {index === 1 && <i className="fa-solid fa-chevron-down arrow-icon"></i>}
                 </Link>
                 {index === 1 && (
                   <ul className="submenu">
-                    {currentData.skincareSub.map((sub, i) => (
+                    {data.skincareSub.map((sub, i) => (
                       <li key={i}><Link to="/">{sub}</Link></li>
                     ))}
                   </ul>
