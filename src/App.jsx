@@ -1,18 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import './App.css';
+import DetailProduct from './components/Products/DetailProduct';
+import ProductList from "./components/Products/ProductList";
+import Cart from "./components/Pages/Cart";
 
 function App() {
+  const location = useLocation();
+  const hideChrome =
+    location.pathname === '/login' ||
+    location.pathname === '/signup' ||
+    location.pathname === '/admin';
   return (
-    <Router>
-      <div className="app-wrapper">
-     
-        <Header />
-        <Footer />
-      </div>
-    </Router>
+    <>
+      {!hideChrome && <Header />}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <ProductList />
+            </>
+          }
+        />
+        <Route path="/product/:id" element={<DetailProduct />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
+      {!hideChrome && <Footer />}
+    </>
   );
 }
 
