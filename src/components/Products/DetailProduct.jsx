@@ -76,7 +76,7 @@ const DetailProduct = () => {
                     </div>
 
                     <button className="add-to-cart-banner" onClick={handleAddToCart}>
-                        THÊM VÀO GIỎ — {product.currentPrice}
+                        THÊM VÀO GIỎ
                     </button>
 
                     <div className="detail-footer-actions">
