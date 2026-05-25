@@ -7,7 +7,8 @@ import ProductList from "./components/Products/ProductList";
 import Cart from "./components/Pages/Cart";
 import Login from './components/Login/Login';
 import Profile from './components/Login/Profile';
-
+import Admin from './components/Pages/Admin';
+import Banner from './components/Banner/Banner';
 function App() {
   const location = useLocation();
   const hideChrome =
@@ -22,14 +23,17 @@ function App() {
           path="/"
           element={
             <>
+              <Banner />
               <ProductList />
             </>
           }
         />
+
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />}/> 
+        <Route path="/profile" element={<Profile />} />
         <Route path="/product/:id" element={<DetailProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       {!hideChrome && <Footer />}
     </>
